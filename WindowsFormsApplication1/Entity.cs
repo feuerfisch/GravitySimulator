@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1
 {
     class Entity
     {
-        public const double BESCHLEUNIGUNGSKONSTANTE = 0.00000010;
+        public double BESCHLEUNIGUNGSKONSTANTE = 0.00000001;
         string name { get; set; }
         public double x { get; set; }
         public double y { get; set; }
@@ -37,15 +37,16 @@ namespace WindowsFormsApplication1
                     double dx = (this.x - Element.x);
                     double dy = (this.y - Element.y);
                     double dz = (this.z - Element.z);
-                    double dx3abs = Math.Round(System.Math.Abs((dx * dx)), 5);
-                    double dy3abs = Math.Round(System.Math.Abs((dy * dy)), 5);
-                    double dz3abs = Math.Round(System.Math.Abs((dz * dz)), 5);
+                    double dx3abs = Math.Round(System.Math.Abs((dx * dx * dx)), 5);
+                    double dy3abs = Math.Round(System.Math.Abs((dy * dy * dy)), 5);
+                    double dz3abs = Math.Round(System.Math.Abs((dz * dz * dz)), 5);
                     double ax = 0;
                     double ay = 0;
                     double az = 0;
-                    if (dx3abs != 0) { ax = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dx / dx3abs; }
-                    if (dy3abs != 0) { ay = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dy / dy3abs; }
-                    if (dz3abs != 0) { az = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dz / dz3abs; }
+                    double distanz = Math.Pow((dx3abs + dy3abs + dz3abs), 1.0 / 3.0);
+                    if (distanz != 0) { ax = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dx / distanz; }
+                    if (distanz != 0) { ay = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dy / distanz; }
+                    if (distanz != 0) { az = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dz / distanz; }
                     vx = vx + ax;
                     vy = vy + ay;
                     vz = vz + az;
