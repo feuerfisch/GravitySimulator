@@ -32,9 +32,9 @@ namespace WindowsFormsApplication1
                         double ay = 0;
                         double az = 0;
                         double distanz = Math.Pow((dx3abs + dy3abs + dz3abs), 1.0 / 3.0);
-                        if (distanz != 0) { ax = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dx / distanz; }
-                        if (distanz != 0) { ay = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dy / distanz; }
-                        if (distanz != 0) { az = -BESCHLEUNIGUNGSKONSTANTE * Element.masse * dz / distanz; }
+                        if (distanz != 0) { ax = -BESCHLEUNIGUNGSKONSTANTE * Iterator.masse * dx / distanz; }
+                        if (distanz != 0) { ay = -BESCHLEUNIGUNGSKONSTANTE * Iterator.masse * dy / distanz; }
+                        if (distanz != 0) { az = -BESCHLEUNIGUNGSKONSTANTE * Iterator.masse * dz / distanz; }
                         Element.vx = Element.vx + ax;
                         Element.vy = Element.vy + ay;
                         Element.vz = Element.vz + az;
